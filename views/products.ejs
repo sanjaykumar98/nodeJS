@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head'); %>
+
+<body>
+    <%- include('./partials/nav'); %>
+    <div class="container mt-4">
+        <h2>Products</h2><br>
+        <div class="row">
+            <% products.forEach((product) => { %>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="<%= product.image %>" class="card-img-top" alt="<%= product.title %>">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= product.title %></h5>
+                            <p class="card-text">&#8377; <%= product.price %></p>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+
+    <style>
+        .card-img-top {
+            height: 200px; /* Adjust the height as needed */
+            object-fit: cover;
+        }
+    </style>
+</body>
+
+</html>
