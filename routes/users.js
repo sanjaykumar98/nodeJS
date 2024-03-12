@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const { client } = require('../db');
 const db = process.env.DB_NAME;
-const collectionName = "test";
+const collectionName = "users";
 
 // users homepage
 app.get('/', async (req, res) => {
@@ -43,7 +43,7 @@ app.post('/', async (req, res) => {
         const isAvailable = await client.db(db).collection(collectionName).findOne({ name: data.name });
         if (isAvailable) throw 'User already exists with same name!';
         const response = await client.db(db).collection(collectionName).insertOne(data);
-        res.status(201).json('Inserted Successfully', response);
+        res.json(200, { message: 'Success' });
     } catch (error) {
         res.status(500).send(error);
     }
